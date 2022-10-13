@@ -1,0 +1,13 @@
+//Nav collapse animation
+
+@keyframes collapseAnim {
+    0% {
+        width: 15%;
+        border-top: 1px solid white;
+    }
+
+    100% {
+        width: 100%;
+        border-top: 1px solid white;
+    }
+}

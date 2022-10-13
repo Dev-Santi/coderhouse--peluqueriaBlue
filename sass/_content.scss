@@ -5,19 +5,32 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    /* border: 1px solid red; */
+    /* border: $border; */
 }
 
 //nav
 
 .navbar {
+    @include box_shadow;
     background-color: map-get($map: $palette, $key: '4');
+    max-height: 350px;
+    z-index: 1000;
 
     .container-fluid {
         .navbar-brand {
             width: 70%;
 
             img {
+                width: 150px;
+            }
+        }
+
+        .navbar-toggler {
+            width: 50px;
+            border: none;
+            color: $white;
+
+            svg {
                 width: 100%;
             }
         }
@@ -25,8 +38,11 @@
         .navbar-collapse {
             .navbar-nav {
                 margin-top: 20px;
+
                 .nav-item {
+                    animation: collapseAnim 0.5s;
                     border-top: 1px solid $white;
+
                     .nav-link {
                         font-weight: 500;
                         color: map-get($map: $second_palette, $key: '5');
@@ -35,5 +51,19 @@
                 }
             }
         }
+    }
+}
+
+//header
+
+.header {
+    @include box_shadow;
+    padding: 20px 0;
+
+    h1 {
+        font-size: 22px;
+        color: map-get($map: $second_palette, $key: '5');
+        text-shadow: 0 1px 1px $light_gray;
+        text-align: center;
     }
 }
