@@ -18,7 +18,7 @@ $second_palette: (
 
 $white: #fff;
 $light_gray: #d3d3d3;
-$dark_gray: #333333;
+$dark_gray: #272727;
 $black: #000;
 
 //mixins
@@ -27,6 +27,11 @@ $black: #000;
     box-shadow: 0 1px 5px $light_gray;
 }
 
-//para diseñar
-
-$border: 1px solid red;
+@mixin figcaptionCenter {
+    position: absolute;
+    text-align: center;
+    color: $white;
+    font-size: 16px;
+    text-shadow: 0 0 15px black;
+    font-weight: 700;
+}

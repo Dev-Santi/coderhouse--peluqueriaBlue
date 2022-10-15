@@ -5,7 +5,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    /* border: $border; */
+    /* border: 1px solid red; */
+}
+
+a {
+    outline: none
 }
 
 //nav
@@ -13,7 +17,7 @@
 .navbar {
     @include box_shadow;
     background-color: map-get($map: $palette, $key: '4');
-    max-height: 350px;
+    max-height: 420px;
     z-index: 1000;
 
     .container-fluid {
@@ -21,7 +25,7 @@
             width: 70%;
 
             img {
-                width: 150px;
+                width: 200px;
             }
         }
 
@@ -58,12 +62,131 @@
 
 .header {
     @include box_shadow;
-    padding: 20px 0;
+    margin: 10px 0;
+    padding: 15px 0;
+    background-color: map-get($map: $palette, $key: '1');
 
     h1 {
-        font-size: 22px;
+        font-size: 24px;
         color: map-get($map: $second_palette, $key: '5');
-        text-shadow: 0 1px 1px $light_gray;
+        text-shadow: 0 0 1px $light_gray;
         text-align: center;
+    }
+}
+
+//main content
+
+.main {
+    @include box_shadow;
+    margin: 10px 0;
+    padding-top: 15px;
+
+    .services {
+
+        a {
+            display: block;
+            min-width: 280px;
+
+            figure {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: map-get($map: $palette, $key: '4');
+
+                img {
+                    transition: 0.4s;
+                    width: 100%;
+                    opacity: 0.96;
+                }
+
+                figcaption {
+                    @include figcaptionCenter;
+                    transition: 0.2s;
+                    text-shadow: 0 0 5px $dark_gray;
+                    transform: translateY(30px);
+                }
+
+                //Hover para desktop
+                /* &:hover {
+                    img {
+                        opacity: 0.75;
+                    }
+                    figcaption {
+                        scale: 1.2;
+                        transform: translateY(0);
+                    }
+                } */
+            }
+        }
+    }
+
+    .most-selled {
+        @include box_shadow;
+        padding: 10px 0;
+
+        h2 {
+            @include box_shadow;
+            width: 100%;
+            background-color: map-get($map: $second_palette, $key: '4');
+            padding: 15px 0;
+            font-size: 20px;
+            color: $white;
+            text-shadow: 0 0 1px $black;
+            text-align: center;
+        }
+
+        .carousel {
+            margin-top: 10px;
+            width: 100%;
+            height: 500px;
+            display: flex;
+
+            .carousel-inner {
+                .carousel-item {
+                    .card {
+                        background-color: map-get($map: $second_palette, $key: '4');
+                        width: 260px;
+                        height: 500px;
+                        border: 1px solid map-get($map: $second_palette, $key: '4');
+                        border-radius: 15px;
+                        overflow: hidden;
+                        text-align: center;
+                        color: $white;
+                        box-shadow: 10px 12px 20px rgb(160, 160, 160);
+
+                        img {
+                            height: 250px;
+                        }
+
+                        .card-body {
+                            h3 {
+                                font-weight: 700;
+                                font-size: 22px;
+                            }
+
+                            p {
+                                font-size: 14px;
+
+                                &:nth-child(3) {
+                                    font-weight: 700;
+                                    font-size: 18px;
+                                }
+                            }
+
+                            a {
+                                background-color: map-get($map: $second_palette, $key: '5');
+                                box-shadow: 1px 2px 3px $dark_gray;
+                                font-weight: 500;
+                                border-radius: 15px;
+                                padding: 5px 0;
+                                width: 150px;
+                                color: $white;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
