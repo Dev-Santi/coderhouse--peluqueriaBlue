@@ -141,7 +141,7 @@ a {
 .main .most-selled .carousel .carousel-inner .carousel-item .card {
   background-color: #3b8686;
   width: 260px;
-  height: 500px;
+  height: 480px;
   border: 1px solid #3b8686;
   border-radius: 15px;
   overflow: hidden;
@@ -155,15 +155,20 @@ a {
 .main .most-selled .carousel .carousel-inner .carousel-item .card .card-body h3 {
   font-weight: 700;
   font-size: 22px;
+  margin-bottom: 10px;
 }
 .main .most-selled .carousel .carousel-inner .carousel-item .card .card-body p {
-  font-size: 14px;
+  font-size: 13px;
 }
 .main .most-selled .carousel .carousel-inner .carousel-item .card .card-body p:nth-child(3) {
+  position: absolute;
+  margin-top: 130px;
   font-weight: 700;
   font-size: 18px;
 }
 .main .most-selled .carousel .carousel-inner .carousel-item .card .card-body a {
+  position: absolute;
+  margin-top: 165px;
   background-color: #0b486b;
   box-shadow: 1px 2px 3px #272727;
   font-weight: 500;
@@ -172,4 +177,7 @@ a {
   width: 150px;
   color: #fff;
   text-decoration: none;
+}
+.main .most-selled .carousel button span img {
+  width: 35px;
 }/*# sourceMappingURL=main.css.map */
