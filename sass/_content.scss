@@ -16,7 +16,7 @@ a {
 
 .navbar {
     @include box_shadow;
-    background-color: map-get($map: $palette, $key: '4');
+    background-color: map-get($map: $second_palette, $key: '5');
     max-height: 420px;
     z-index: 1000;
 
@@ -25,7 +25,7 @@ a {
             width: 70%;
 
             img {
-                width: 200px;
+                width: 160px;
             }
         }
 
@@ -36,6 +36,7 @@ a {
 
             svg {
                 width: 100%;
+                fill: $white;
             }
         }
 
@@ -49,7 +50,7 @@ a {
 
                     .nav-link {
                         font-weight: 500;
-                        color: map-get($map: $second_palette, $key: '5');
+                        color: $white;
                         text-align: center;
                     }
                 }
@@ -91,7 +92,7 @@ a {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: map-get($map: $palette, $key: '4');
+                background-color: $white;
 
                 img {
                     transition: 0.4s;
@@ -109,7 +110,7 @@ a {
                 //Hover para desktop
                 /* &:hover {
                     img {
-                        opacity: 0.75;
+                        opacity: 0.60;
                     }
                     figcaption {
                         scale: 1.2;
@@ -119,6 +120,8 @@ a {
             }
         }
     }
+
+    //most selled
 
     .most-selled {
         @include box_shadow;
@@ -137,9 +140,11 @@ a {
 
         .carousel {
             margin-top: 10px;
+            padding-top: 10px;
             width: 100%;
             height: 500px;
             display: flex;
+            @include box_shadow;
 
             .carousel-inner {
                 .carousel-item {
@@ -187,6 +192,13 @@ a {
                                 width: 150px;
                                 color: $white;
                                 text-decoration: none;
+                                transition: 0.3s;
+
+                                //para desktop
+                                /* &:hover {
+                                    background-color: $white;
+                                    color: map-get($map: $second_palette, $key: '5');
+                                } */
                             }
                         }
                     }
@@ -194,6 +206,12 @@ a {
             }
 
             button {
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 1;
+                }
+
                 span {
                     img {
                         width: 35px;
@@ -201,5 +219,119 @@ a {
                 }
             }
         }
+    }
+
+    //newsletter
+
+    .newsletter {
+        @include box_shadow;
+        padding: 10px 0;
+        background-color: map-get($map: $second_palette, $key: '5');
+
+        h2 {
+            padding: 15px 0;
+            font-size: 20px;
+            color: $white;
+            text-shadow: 0 0 1px $black;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 10px;
+
+            input {
+                width: 60%;
+                padding: 5px;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                font-size: 14px;
+                border: none;
+                outline: none;
+            }
+
+            button {
+                background-color: map-get($map: $palette, $key: '5');
+                color: $black;
+                position: relative;
+                left: -8px;
+                width: 100px;
+                height: 35px;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                transition: 0.3s;
+
+                //Para desktop
+                /* &:hover {
+                    background-color: $white;
+                    color: map-get($map: $second_palette, $key: '5');
+                } */
+            }
+        }
+    }
+}
+
+//footer
+
+.footer {
+    text-align: center;
+    background-color: map-get($map: $second_palette, $key: '5');
+
+    .logo {
+        width: 150px;
+        margin-bottom: 25px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+    }
+
+    h2 {
+        color: $white;
+        margin-bottom: 10px;
+    }
+
+    .hours {
+        color: map-get($map: $palette, $key: '1');
+        margin: 10px;
+        width: 100%;
+
+        div {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    .reservations {
+        @extend .hours;
+        a {
+            width: 200px;
+            color: map-get($map: $palette, $key: '1');
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+
+            img {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    .address {
+        @extend .hours;
+    }
+
+    .copyR {
+        @extend .hours;
+        color: $white;
+        font-size: 12px;
     }
 }
