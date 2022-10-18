@@ -208,9 +208,10 @@ a {
             button {
                 opacity: 0.5;
 
-                &:hover {
+                //para desktop
+                /* &:hover {
                     opacity: 1;
-                }
+                } */
 
                 span {
                     img {
@@ -302,14 +303,17 @@ a {
             gap: 12px;
 
             img {
-                width: 24px;
-                height: 24px;
+                position: relative;
+                top: 3px;
+                width: 18px;
+                height: 18px;
             }
         }
     }
 
     .reservations {
         @extend .hours;
+
         a {
             width: 200px;
             color: map-get($map: $palette, $key: '1');
@@ -319,8 +323,10 @@ a {
             gap: 12px;
 
             img {
-                width: 24px;
-                height: 24px;
+                position: relative;
+                top: 3px;
+                width: 18px;
+                height: 18px;
             }
         }
     }
