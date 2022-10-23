@@ -138,48 +138,54 @@ while (opcion != 4) {
             }
             break;
         case 2:
-            articulo = seleccionarArticulo();
-            switch (articulo) {
-                case 1:
-                    if (contadorValor1 > 0) {
-                        total -= valor1;
-                        contadorValor1--;
-                    }
-                    else (
-                        alert("El articulo seleccionado no se encuentra en el carrito.")
-                    )
-                    break;
-                case 2:
-                    if (contadorValor2 > 0) {
-                        total -= valor2;
-                        contadorValor2--;
-                    }
-                    else (
-                        alert("El articulo seleccionado no se encuentra en el carrito.")
-                    )
-                    break;
-                case 3:
-                    if (contadorValor3 > 0) {
-                        total -= valor3;
-                        contadorValor3--;
-                    }
-                    else (
-                        alert("El articulo seleccionado no se encuentra en el carrito.")
-                    )
-                    break;
-                case 4:
-                    if (contadorValor4 > 0) {
-                        total -= valor4;
-                        contadorValor4--;
-                    }
-                    else (
-                        alert("El articulo seleccionado no se encuentra en el carrito.")
-                    )
-                    break;
-            }
-            if (articulo != 5) {
-                alert("¡Artículo quitado con éxito!")
+            if (total > 0) {
+                articulo = seleccionarArticulo();
+                switch (articulo) {
+                    case 1:
+                        if (contadorValor1 > 0) {
+                            total -= valor1;
+                            contadorValor1--;
+                            alert("¡Artículo quitado con éxito!")
+                        }
+                        else {
+                            alert("El articulo seleccionado no se encuentra en el carrito.");
+                        }
+                        break;
+                    case 2:
+                        if (contadorValor2 > 0) {
+                            total -= valor2;
+                            contadorValor2--;
+                            alert("¡Artículo quitado con éxito!");
+                        }
+                        else {
+                            alert("El articulo seleccionado no se encuentra en el carrito.");
+                        }
+                        break;
+                    case 3:
+                        if (contadorValor3 > 0) {
+                            total -= valor3;
+                            contadorValor3--;
+                            alert("¡Artículo quitado con éxito!");
+                        }
+                        else {
+                            alert("El articulo seleccionado no se encuentra en el carrito.");
+                        }
+                        break;
+                    case 4:
+                        if (contadorValor4 > 0) {
+                            total -= valor4;
+                            contadorValor4--;
+                            alert("¡Artículo quitado con éxito!");
+                        }
+                        else {
+                            alert("El articulo seleccionado no se encuentra en el carrito.");
+                        }
+                        break;
+                }
                 mostrarTotal();
+            }
+            else {
+                alert("¡Aún no hay articulos en el carrito!");
             }
             break;
         case 3:
@@ -190,11 +196,11 @@ while (opcion != 4) {
                 }
             }
             else {
-                alert("¡Aún no hay articulos en el carrito!")
+                alert("¡Aún no hay articulos en el carrito!");
             }
             break;
         default:
-            alert("Opción inválida, intente nuevamente.")
+            alert("Opción inválida, intente nuevamente.");
             break;
     }
     opcion = menuPrincipal();
