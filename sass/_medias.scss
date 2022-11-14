@@ -1,0 +1,15 @@
+@media (min-width: 839px) {
+    .main {
+        .services {
+            max-width: 839px;
+        }
+    }
+}
+
+@media (min-width: 1120px) {
+    .main {
+        .services {
+            max-width: 100%;
+        }
+    }
+}

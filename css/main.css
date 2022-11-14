@@ -241,6 +241,7 @@ a {
 .footer {
   text-align: center;
   background-color: #0b486b;
+  color: white;
 }
 .footer .logo {
   width: 150px;
@@ -253,7 +254,6 @@ a {
   margin-bottom: 10px;
 }
 .footer .hours, .footer .copyR, .footer .address, .footer .reservations {
-  color: #deeea2;
   margin: 10px;
   width: 100%;
 }
@@ -269,8 +269,8 @@ a {
   height: 18px;
 }
 .footer .reservations a {
+  color: #fff;
   width: 200px;
-  color: #deeea2;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -283,6 +283,17 @@ a {
   height: 18px;
 }
 .footer .copyR {
-  color: #fff;
+  color: #deeea2;
   font-size: 12px;
+}
+
+@media (min-width: 839px) {
+  .main .services {
+    max-width: 839px;
+  }
+}
+@media (min-width: 1120px) {
+  .main .services {
+    max-width: 100%;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -3,7 +3,7 @@
 // Funciones
 
 function menuPrincipal() {
-    let opcion = parseInt(prompt("Ingrese la opción deseada:\n\n 1- Agregar artículos al carrito\n 2- Quitar Artículos del carrito\n 3- Ir a pagar\n 4- Salir"));
+    let opcion = parseInt(prompt("Ingrese la opción deseada:\n\n 1- Agregar artículos al carrito\n 2- Quitar artículos del carrito\n 3- Ver cantidad de articulos en el carrito\n 4- Ir a pagar\n 5- Salir"));
     return opcion;
 }
 
@@ -23,6 +23,35 @@ function seleccionarArticulo() {
     } while (finalizar == false);
 }
 
+function agregarArticulo (n) {
+    total += precios[n];
+    carrito[n]++;
+}
+
+function quitarArticulo(n) {
+    if (carrito[n] > 0) {
+        total -= precios[n];
+        carrito[n]--;
+        alert("¡Artículo quitado con éxito!")
+    }
+    else {
+        alert("El articulo seleccionado no se encuentra en el carrito.");
+    }
+}
+
+function verCarrito () {
+    if (total > 0) {
+        let cantidad = 0;
+        for (const producto of carrito){
+            cantidad += producto;
+        }
+        alert("Hay " + cantidad + " articulo/s por un total de $" + total);
+    }
+    else {
+        alert("¡Aún no hay articulos en el carrito!");
+    }
+}
+
 function mostrarArticulos() {
     let peinesKeller;
     let perfumeSnirf;
@@ -30,29 +59,29 @@ function mostrarArticulos() {
     let labialMaybelline;
     let salida;
 
-    if (contadorValor1 > 0) {
-        peinesKeller = '1- Peines Keller x' + contadorValor1;
+    if (carrito[0] > 0) {
+        peinesKeller = '1- Peines Keller x' + carrito[0];
     }
     else {
         peinesKeller = '1-';
     }
 
-    if (contadorValor2 > 0) {
-        perfumeSnirf = '2- Perfume Snirf x' + contadorValor2;
+    if (carrito[1] > 0) {
+        perfumeSnirf = '2- Perfume Snirf x' + carrito[1];
     }
     else {
         perfumeSnirf = '2-';
     }
 
-    if (contadorValor3 > 0) {
-        kitHigiene = '3- Kit higiene bucal x' + contadorValor3;
+    if (carrito[2] > 0) {
+        kitHigiene = '3- Kit higiene bucal x' + carrito[2];
     }
     else {
         kitHigiene = '3-';
     }
 
-    if (contadorValor4 > 0) {
-        labialMaybelline = '4- Labial Maybelline x' + contadorValor4;
+    if (carrito[3] > 0) {
+        labialMaybelline = '4- Labial Maybelline x' + carrito[3];
     }
     else {
         labialMaybelline = '4-';
@@ -85,56 +114,45 @@ function opcionPagar() {
 
 function pagoExitoso() {
     total = 0;
-    contadorValor1 = 0;
-    contadorValor2 = 0;
-    contadorValor3 = 0;
-    contadorValor4 = 0;
+    carrito[0, 1, 2, 3] = 0;
     alert("¡El pago ha sido exitoso!")
 }
 
 // Principal
 
+//Stock de artículos
+
 // Precio de los artículos
-const valor1 = 629.99;
-const valor2 = 1339.99;
-const valor3 = 460.00;
-const valor4 = 1000.00;
+const precios = [629.99, 1339.99, 460.00, 1000.00];
 
-// Contador de artículos en el carrito
-let contadorValor1 = 0;
-let contadorValor2 = 0;
-let contadorValor3 = 0;
-let contadorValor4 = 0;
-
+// Contadores
+let carrito = [0, 0, 0, 0];
 let total = 0;
+
+//Comienza el programa
 let opcion = menuPrincipal();
 
-while (opcion != 4) {
+while (opcion != 5) {
     let articulo;
     switch (opcion) {
         case 1:
             articulo = seleccionarArticulo();
             switch (articulo) {
                 case 1:
-                    total += valor1;
-                    contadorValor1++;
+                    agregarArticulo(0);
                     break;
                 case 2:
-                    total += valor2;
-                    contadorValor2++;
+                    agregarArticulo(1);
                     break;
                 case 3:
-                    total += valor3;
-                    contadorValor3++;
+                    agregarArticulo(2);
                     break;
                 case 4:
-                    total += valor4;
-                    contadorValor4++;
+                    agregarArticulo(3);
                     break;
             }
             if (articulo != 5) {
                 alert("¡Artículo agregado con éxito!")
-                mostrarTotal();
             }
             break;
         case 2:
@@ -142,53 +160,27 @@ while (opcion != 4) {
                 articulo = seleccionarArticulo();
                 switch (articulo) {
                     case 1:
-                        if (contadorValor1 > 0) {
-                            total -= valor1;
-                            contadorValor1--;
-                            alert("¡Artículo quitado con éxito!")
-                        }
-                        else {
-                            alert("El articulo seleccionado no se encuentra en el carrito.");
-                        }
+                        quitarArticulo(0);
                         break;
                     case 2:
-                        if (contadorValor2 > 0) {
-                            total -= valor2;
-                            contadorValor2--;
-                            alert("¡Artículo quitado con éxito!");
-                        }
-                        else {
-                            alert("El articulo seleccionado no se encuentra en el carrito.");
-                        }
+                        quitarArticulo(1);
                         break;
                     case 3:
-                        if (contadorValor3 > 0) {
-                            total -= valor3;
-                            contadorValor3--;
-                            alert("¡Artículo quitado con éxito!");
-                        }
-                        else {
-                            alert("El articulo seleccionado no se encuentra en el carrito.");
-                        }
+                        quitarArticulo(2);
                         break;
                     case 4:
-                        if (contadorValor4 > 0) {
-                            total -= valor4;
-                            contadorValor4--;
-                            alert("¡Artículo quitado con éxito!");
-                        }
-                        else {
-                            alert("El articulo seleccionado no se encuentra en el carrito.");
-                        }
+                        quitarArticulo(3);
                         break;
                 }
-                mostrarTotal();
             }
             else {
                 alert("¡Aún no hay articulos en el carrito!");
             }
             break;
         case 3:
+            verCarrito();
+            break;
+        case 4:
             if (total > 0) {
                 mostrarTotal();
                 if (opcionPagar() == 1) {

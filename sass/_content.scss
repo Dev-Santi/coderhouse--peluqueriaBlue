@@ -279,6 +279,7 @@ a {
 .footer {
     text-align: center;
     background-color: map-get($map: $second_palette, $key: '5');
+    color: white;
 
     .logo {
         width: 150px;
@@ -293,7 +294,6 @@ a {
     }
 
     .hours {
-        color: map-get($map: $palette, $key: '1');
         margin: 10px;
         width: 100%;
 
@@ -315,8 +315,8 @@ a {
         @extend .hours;
 
         a {
+            color: $white;
             width: 200px;
-            color: map-get($map: $palette, $key: '1');
             text-decoration: none;
             display: flex;
             justify-content: center;
@@ -337,7 +337,7 @@ a {
 
     .copyR {
         @extend .hours;
-        color: $white;
+        color: map-get($map: $palette, $key: '1');
         font-size: 12px;
     }
 }
