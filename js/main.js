@@ -1,4 +1,4 @@
-/* Arrays */
+                /* Arrays */
 //Array con los items
 const items = [];
 items.push(new Item("Peines Keller", 629.99));
@@ -16,7 +16,7 @@ stock.push(new Producto(items[3], 10))
 //Array del carrito de compras
 const carrito = [];
 
-/* Funciones */
+                /* Funciones */
 
 //Comprobación de que la opcion del menú principal sea válida
 function opcionMenu(mensaje) {
@@ -193,7 +193,7 @@ function pagarTotal() {
 
 
 
-/* Programa principal */
+                /* Programa principal */
 
 let opcionElegida = menuPrincipal();
 
