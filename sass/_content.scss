@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    /* border: 1px solid red; */
+    /* border: 1px solid black; */
 }
 
 a {
@@ -65,11 +65,11 @@ a {
     @include box_shadow;
     margin: 10px 0;
     padding: 15px 0;
-    background-color: map-get($map: $palette, $key: '1');
+    background-color: map-get($map: $second_palette, $key: '4');
 
     h1 {
         font-size: 24px;
-        color: map-get($map: $second_palette, $key: '5');
+        color: $white;
         text-shadow: 0 0 1px $light_gray;
         text-align: center;
     }
@@ -81,6 +81,56 @@ a {
     @include box_shadow;
     margin: 10px 0;
     padding-top: 15px;
+
+    //cards
+    .card {
+        background-color: map-get($map: $second_palette, $key: '4');
+        width: 260px;
+        height: 480px;
+        border: 1px solid map-get($map: $second_palette, $key: '4');
+        border-radius: 15px;
+        overflow: hidden;
+        text-align: center;
+        color: $white;
+        box-shadow: 10px 12px 20px rgb(160, 160, 160);
+
+        img {
+            height: 250px;
+        }
+
+        .card-body {
+            h3 {
+                font-weight: 700;
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 13px;
+
+                &:nth-child(3) {
+                    position: absolute;
+                    margin-top: 130px;
+                    font-weight: 700;
+                    font-size: 18px;
+                }
+            }
+
+            a {
+                position: absolute;
+                margin-top: 165px;
+                background-color: map-get($map: $second_palette, $key: '5');
+                box-shadow: 1px 2px 3px $dark_gray;
+                font-weight: 500;
+                border-radius: 15px;
+                padding: 5px 0;
+                width: 150px;
+                color: $white;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+        }
+    }
 
     .services {
 
@@ -106,17 +156,6 @@ a {
                     text-shadow: 0 0 5px $dark_gray;
                     transform: translateY(30px);
                 }
-
-                //Hover para desktop
-                /* &:hover {
-                    img {
-                        opacity: 0.60;
-                    }
-                    figcaption {
-                        scale: 1.2;
-                        transform: translateY(0);
-                    }
-                } */
             }
         }
     }
@@ -146,72 +185,8 @@ a {
             display: flex;
             @include box_shadow;
 
-            .carousel-inner {
-                .carousel-item {
-                    .card {
-                        background-color: map-get($map: $second_palette, $key: '4');
-                        width: 260px;
-                        height: 480px;
-                        border: 1px solid map-get($map: $second_palette, $key: '4');
-                        border-radius: 15px;
-                        overflow: hidden;
-                        text-align: center;
-                        color: $white;
-                        box-shadow: 10px 12px 20px rgb(160, 160, 160);
-
-                        img {
-                            height: 250px;
-                        }
-
-                        .card-body {
-                            h3 {
-                                font-weight: 700;
-                                font-size: 22px;
-                                margin-bottom: 10px;
-                            }
-
-                            p {
-                                font-size: 13px;
-
-                                &:nth-child(3) {
-                                    position: absolute;
-                                    margin-top: 130px;
-                                    font-weight: 700;
-                                    font-size: 18px;
-                                }
-                            }
-
-                            a {
-                                position: absolute;
-                                margin-top: 165px;
-                                background-color: map-get($map: $second_palette, $key: '5');
-                                box-shadow: 1px 2px 3px $dark_gray;
-                                font-weight: 500;
-                                border-radius: 15px;
-                                padding: 5px 0;
-                                width: 150px;
-                                color: $white;
-                                text-decoration: none;
-                                transition: 0.3s;
-
-                                //para desktop
-                                /* &:hover {
-                                    background-color: $white;
-                                    color: map-get($map: $second_palette, $key: '5');
-                                } */
-                            }
-                        }
-                    }
-                }
-            }
-
             button {
                 opacity: 0.5;
-
-                //para desktop
-                /* &:hover {
-                    opacity: 1;
-                } */
 
                 span {
                     img {
@@ -263,14 +238,64 @@ a {
                 outline: none;
                 font-size: 14px;
                 transition: 0.3s;
-
-                //Para desktop
-                /* &:hover {
-                    background-color: $white;
-                    color: map-get($map: $second_palette, $key: '5');
-                } */
             }
         }
+    }
+
+    //Carrito de compras
+
+    .carrito {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        text-align: center;
+        h2 {
+            height: 40px;
+        }
+
+        .productos {
+            .productosLista {
+                padding: 0;
+                li {
+                    height: 30px;
+                }
+            }
+        }
+
+        .cantidad {
+            .cantidadLista {
+                padding: 0;
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    list-style: none;
+                    height: 30px;
+                    button {
+                        width: 25px;
+                        height: 25px;
+                        padding: 0;
+                        margin: 0 2px;
+                    }
+                }
+            }
+        }
+    }
+
+    .finalizarCompra {
+        text-align: center;
+        padding-bottom: 15px;
+    }
+}
+
+//grid de los productos
+
+.grid-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .card  {
+        margin: 10px 5px;
     }
 }
 

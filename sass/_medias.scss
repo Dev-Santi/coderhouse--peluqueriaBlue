@@ -3,13 +3,75 @@
         .services {
             max-width: 839px;
         }
+
+        .newsletter {
+            form {
+                input {
+                    width: 35%;
+                }
+            }
+        }
     }
 }
 
-@media (min-width: 1120px) {
+@media (min-width: 1200px) {
     .main {
+        .card {
+            .card-body {
+                a {
+                    &:hover {
+                        background-color: $white;
+                        color: map-get($map: $second_palette, $key: '5');
+                    }
+                }
+                
+            }
+        }
         .services {
             max-width: 100%;
+            a {
+                figure {
+                    &:hover {
+                        img {
+                            opacity: 0.60;
+                        }
+                        figcaption {
+                            scale: 1.2;
+                            transform: translateY(0);
+                        }
+                    }
+                }
+            }
+        }
+
+        .most-selled {
+            button {
+                margin: 0 300px;
+            }
+            .carousel {
+                button {
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+            
+            
+            
+            
+        }
+        .newsletter {
+            form {
+                input {
+                    width: 20%;
+                }
+            }
+            button {
+                &:hover {
+                    background-color: $white;
+                    color: map-get($map: $second_palette, $key: '5');
+                }
+            }
         }
     }
 }
