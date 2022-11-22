@@ -18,7 +18,7 @@
     .main {
         .card {
             .card-body {
-                a {
+                button {
                     &:hover {
                         background-color: $white;
                         color: map-get($map: $second_palette, $key: '5');

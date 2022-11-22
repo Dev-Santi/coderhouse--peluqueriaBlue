@@ -1,18 +1,23 @@
 class Producto {
-    constructor (item, stock) {
-        this.item = item;
-        this.stock = stock;
+    constructor (nombre, precio, cantidad) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
     }
 
-    quitar(cantidad) {
-        if (cantidad > 0 && cantidad <= this.stock) {
-            this.stock -= cantidad;
+    quitar(monto) {
+        if (monto > 0 && monto <= this.cantidad) {
+            this.cantidad -= monto;
         }
     }
 
-    agregar(cantidad) {
-        if (cantidad > 0) {
-            this.stock += cantidad;
+    agregar(monto) {
+        if (monto > 0) {
+            this.cantidad += monto;
         }
+    }
+
+    total() {
+        return this.cantidad * this.precio;
     }
 }

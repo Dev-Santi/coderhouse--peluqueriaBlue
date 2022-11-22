@@ -112,17 +112,17 @@ a {
   font-weight: 700;
   font-size: 18px;
 }
-.main .card .card-body a {
+.main .card .card-body button {
   position: absolute;
   margin-top: 165px;
   background-color: #0b486b;
+  border: none;
   box-shadow: 1px 2px 3px #272727;
   font-weight: 500;
   border-radius: 15px;
   padding: 5px 0;
   width: 150px;
   color: #fff;
-  text-decoration: none;
   transition: 0.3s;
 }
 .main .services a {
@@ -320,7 +320,7 @@ a {
   }
 }
 @media (min-width: 1200px) {
-  .main .card .card-body a:hover {
+  .main .card .card-body button:hover {
     background-color: #fff;
     color: #0b486b;
   }
