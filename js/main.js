@@ -1,70 +1,101 @@
-//Array con los productos en stock
-const stock = [];
-stock.push(new Producto("Peines Keller", 629.99, 60));
-stock.push(new Producto("Perfume Snirf", 1339.99, 20));
-stock.push(new Producto("Kit higiene bucal", 460.00, 50));
-stock.push(new Producto("Kit maquillaje Renkor", 4489.99, 30));
-stock.push(new Producto("Cremas L'Oréal", 459.50, 40));
-stock.push(new Producto("Labial Maybelline", 1000.00, 45));
-stock.push(new Producto("Juego de brochas", 449.99, 55));
+//Array del carrito:
+//De existir un carrito, recuperarlo:
+let carrito = JSON.parse(localStorage.getItem("carrito"));
+if (carrito == undefined) {
+    carrito = [];
+}
 
-//Array del carrito
-const carrito = [];
+//Array del stock:
+//El stock (de momento) se guarda en el local storage:
+let stock = JSON.parse(localStorage.getItem("stock"));
+if (stock == undefined || stock.length == 0) {
+    stock = [];
+    stock.push(new Producto("Peines Keller", 629.99, 60));
+    stock.push(new Producto("Perfume Snirf", 1339.99, 20));
+    stock.push(new Producto("Kit higiene bucal", 460.00, 50));
+    stock.push(new Producto("Kit maquillaje Renkor", 4489.99, 30));
+    stock.push(new Producto("Cremas L'Oréal", 459.50, 40));
+    stock.push(new Producto("Labial Maybelline", 1000.00, 45));
+    stock.push(new Producto("Juego de brochas", 449.99, 55));
+}
 
 //Obtencion de los botones para añadir articulos al carrito
-let boton0 = document.getElementById('btn0');
-let boton1 = document.getElementById('btn1');
-let boton2 = document.getElementById('btn2');
-let boton3 = document.getElementById('btn3');
-let boton4 = document.getElementById('btn4');
-let boton5 = document.getElementById('btn5');
-let boton6 = document.getElementById('btn6');
+let boton0 = document.getElementsByClassName('0');
+let boton1 = document.getElementsByClassName('1');
+let boton2 = document.getElementsByClassName('2');
+let boton3 = document.getElementsByClassName('3');
+let boton4 = document.getElementsByClassName('4');
+let boton5 = document.getElementsByClassName('5');
+let boton6 = document.getElementsByClassName('6');
+
+//Funcion agregar producto al carrito
+function agregarAlCarrito(id) {
+    //Comprobacion de que haya stock del producto
+    if (stock[id].cantidad > 0) {
+        //Comprobacion de que el articulo ya se encuentre en el carrito:
+        let encontrado;
+        let ubicacion;
+        if (!carrito.length == 0) {
+            carrito.forEach((e, indice) => {
+                if (e.nombre == stock[id].nombre) encontrado = true, ubicacion = indice;
+            });
+        }
+        //En caso de no ser encontrado:
+        if (!encontrado) {
+            carrito.push(new Producto(stock[id].nombre, stock[id].precio, 1));
+            stock[id].cantidad--;
+        }
+        //En caso de que el producto se encuentre ya en el carrito:
+        else {
+            carrito[ubicacion].cantidad++;
+            stock[id].cantidad--;
+        }
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        localStorage.setItem("stock", JSON.stringify(stock));
+    }
+    else {
+        alert("Ya no nos quedan más unidades! :c");
+    }
+}
 
 //Agregar producto al carrito
-boton0.addEventListener("click", () => {
-    //Comprobacion de que el articulo ya se encuentre en el carrito:
-    let encontrado;
-    let ubicacion;
-    if (!carrito.length == 0) {
-        carrito.forEach((e, indice) => {
-            if (e.nombre == stock[0].nombre) encontrado = true, ubicacion = indice;
-        });
+/* Como solo existe un boton de añadir al carrito por producto en cada página
+se puede acceder a cualquier boton utilizando botonX[0] */
+//Antes de definir las funciones se verifica que el boton exista en la página
+if (boton0.length != 0) {
+    boton0[0].onclick = () => {
+        agregarAlCarrito(0);
     }
-    //En caso de no ser encontrado:
-    if (!encontrado) {
-        carrito.push(new Producto(stock[0].nombre, stock[0].precio, 1));
-        stock[0].cantidad--;
+}
+if (boton1.length != 0) {
+    boton1[0].onclick = () => {
+        agregarAlCarrito(1);
     }
-    //En caso de que el producto se encuentre ya en el carrito:
-    else {
-        carrito[ubicacion].cantidad++;
-        stock[0].cantidad--;
+}
+if (boton2.length != 0) {
+    boton2[0].onclick = () => {
+        agregarAlCarrito(2);
     }
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    localStorage.setItem("stock", JSON.stringify(stock));
-});
-
-boton1.addEventListener("click", () => {
-    //Comprobacion de que el articulo ya se encuentre en el carrito:
-    let encontrado;
-    let ubicacion;
-    if (!carrito.length == 0) {
-        carrito.forEach((e, indice) => {
-            if (e.nombre == stock[1].nombre) encontrado = true, ubicacion = indice;
-        });
+}
+if (boton3.length != 0) {
+    boton3[0].onclick = () => {
+        agregarAlCarrito(3);
     }
-    //En caso de no ser encontrado:
-    if (!encontrado) {
-        carrito.push(new Producto(stock[1].nombre, stock[1].precio, 1));
-        stock[1].cantidad--;
+}
+if (boton4.length != 0) {
+    boton4[0].onclick = () => {
+        agregarAlCarrito(4);
     }
-    //En caso de que el producto se encuentre ya en el carrito:
-    else {
-        carrito[ubicacion].cantidad++;
-        stock[1].cantidad--;
+}
+if (boton5.length != 0) {
+    boton5[0].onclick = () => {
+        agregarAlCarrito(5);
     }
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    localStorage.setItem("stock", JSON.stringify(stock));
-});
+}
+if (boton6.length != 0) {
+    boton6[0].onclick = () => {
+        agregarAlCarrito(6);
+    }
+}
 
 /* localStorage.clear(); */

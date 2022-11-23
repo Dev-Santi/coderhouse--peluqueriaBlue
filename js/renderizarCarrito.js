@@ -30,15 +30,19 @@ carrito.forEach((e, indice) => {
     disminuir.setAttribute("id", "disminuir");
 
     aumentar.onclick = () => {
-        e.cantidad++;
-        //
         const elemento = stock.find((el) => el.nombre == e.nombre);
         const id = stock.indexOf(elemento);
-        stock[id].cantidad--;
-        //
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        localStorage.setItem("stock", JSON.stringify(stock));
-        document.location.reload();
+        //Comprobamos si existe stock
+        if (stock[id].cantidad > 0) {
+            e.cantidad++;
+            stock[id].cantidad--;
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            localStorage.setItem("stock", JSON.stringify(stock));
+            document.location.reload();
+        }
+        else {
+            alert("Ya no nos quedan más unidades! :c");
+        }
     };
 
     disminuir.onclick = () => {
@@ -65,6 +69,30 @@ carrito.forEach((e, indice) => {
     }
 });
 
+//Vaciar carrito:
+let vaciarCarrito = document.getElementById('vaciar');
+vaciarCarrito.onclick = () => {
+    stock.forEach((el, indice) => {
+        carrito.forEach((e, i) => {
+            if (el.nombre == e.nombre) el.cantidad += e.cantidad;
+        });
+    });
+    carrito = [];
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem("stock", JSON.stringify(stock));
+    document.location.reload();
+}
+
+//Finalizar compra
+//Simula una compra, limpia el carrito y refleja la falta en el stock:
+let finalizarCompra = document.getElementById('finalizar');
+finalizarCompra.onclick = () => {
+    carrito = [];
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    alert("Compra Realizada!")
+    document.location.reload();
+}
+
 //Mostrar total a pagar
 let acum = 0;
 carrito.forEach((e) => {
@@ -73,3 +101,5 @@ carrito.forEach((e) => {
 let monto = document.createElement("p");
 monto.innerText = `$${acum.toFixed(2)}`;
 total.append(monto);
+
+/* localStorage.clear(); */
