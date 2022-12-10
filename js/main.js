@@ -6,7 +6,7 @@ if (carrito == undefined) {
 }
 
 //Array del stock:
-//El stock (de momento) se guarda en el local storage:
+//El stock se simula y guarda en el local storage:
 let stock = JSON.parse(localStorage.getItem("stock"));
 if (stock == undefined || stock.length == 0) {
     stock = [];
@@ -52,9 +52,10 @@ function agregarAlCarrito(id) {
         }
         localStorage.setItem("carrito", JSON.stringify(carrito));
         localStorage.setItem("stock", JSON.stringify(stock));
+        swal("¡Agregado al carrito con éxito!");
     }
     else {
-        alert("Ya no nos quedan más unidades! :c");
+        swal("Ya no nos quedan más unidades! :c");
     }
 }
 
@@ -97,5 +98,3 @@ if (boton6.length != 0) {
         agregarAlCarrito(6);
     }
 }
-
-/* localStorage.clear(); */

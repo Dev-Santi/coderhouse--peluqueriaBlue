@@ -9,12 +9,13 @@ let stock = JSON.parse(localStorage.getItem("stock"));
 let listaProductos = document.getElementById("productosLista");
 let productosCantidad = document.getElementById("cantidadLista");
 let total = document.getElementById("total");
+let vaciarCarrito = document.getElementById('vaciar');
+let finalizarCompra = document.getElementById('finalizar');
 
 //Renderizar carrito
 carrito.forEach((e, indice) => {
     //Elementos de la columna de productos:
-    let producto = document.createElement("li");
-    producto.innerText = e.nombre;
+    let producto = document.createElement("li");    producto.innerText = e.nombre;
 
     //Elementos de la columna de cantidades:
     const cantidad = document.createElement("li");
@@ -41,7 +42,7 @@ carrito.forEach((e, indice) => {
             document.location.reload();
         }
         else {
-            alert("Ya no nos quedan más unidades! :c");
+            swal("Ya no nos quedan más unidades! :c");
         }
     };
 
@@ -55,6 +56,7 @@ carrito.forEach((e, indice) => {
 
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("stock", JSON.stringify(stock));
+
             document.location.reload();
         }
     };
@@ -69,12 +71,13 @@ carrito.forEach((e, indice) => {
     }
 });
 
+
 //Vaciar carrito:
-let vaciarCarrito = document.getElementById('vaciar');
 vaciarCarrito.onclick = () => {
-    stock.forEach((el, indice) => {
-        carrito.forEach((e, i) => {
-            if (el.nombre == e.nombre) el.cantidad += e.cantidad;
+    stock.forEach((el) => {
+        carrito.forEach((e) => {
+            let vaciar = el.nombre == e.nombre ? el.cantidad += e.cantidad : "";
+            vaciar;
         });
     });
     carrito = [];
@@ -85,11 +88,9 @@ vaciarCarrito.onclick = () => {
 
 //Finalizar compra
 //Simula una compra, limpia el carrito y refleja la falta en el stock:
-let finalizarCompra = document.getElementById('finalizar');
 finalizarCompra.onclick = () => {
     carrito = [];
     localStorage.setItem("carrito", JSON.stringify(carrito));
-    alert("Compra Realizada!")
     document.location.reload();
 }
 
@@ -101,5 +102,3 @@ carrito.forEach((e) => {
 let monto = document.createElement("p");
 monto.innerText = `$${acum.toFixed(2)}`;
 total.append(monto);
-
-/* localStorage.clear(); */
