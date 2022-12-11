@@ -74,4 +74,17 @@
             }
         }
     }
+
+    #finalizar {
+        margin-right: 2rem;
+        &:hover {
+            background-color: #4ebd57;
+        }
+    }
+
+    #vaciar {
+        &:hover {
+            background-color: #c53e3e;
+        }
+    }
 }

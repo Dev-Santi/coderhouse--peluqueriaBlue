@@ -13,12 +13,13 @@ let vaciarCarrito = document.getElementById('vaciar');
 let finalizarCompra = document.getElementById('finalizar');
 
 //Renderizar carrito
-carrito.forEach((e, indice) => {
+carrito.forEach((e) => {
     //Elementos de la columna de productos:
-    let producto = document.createElement("li");    producto.innerText = e.nombre;
+    let producto = document.createElement("li"); producto.innerText = e.nombre;
 
     //Elementos de la columna de cantidades:
     const cantidad = document.createElement("li");
+    const cantidadValor = document.createElement("span");
     const aumentar = document.createElement("button");
     const disminuir = document.createElement("button");
 
@@ -39,7 +40,15 @@ carrito.forEach((e, indice) => {
             stock[id].cantidad--;
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("stock", JSON.stringify(stock));
-            document.location.reload();
+            
+            cantidadValor.innerText = e.cantidad;
+
+            //Mostrar total a pagar
+            let a = 0;
+            carrito.forEach((e) => {
+                a += e.cantidad * e.precio;
+            });
+            monto.innerText = `$${a.toFixed(2)}`;
         }
         else {
             swal("Ya no nos quedan más unidades! :c");
@@ -47,7 +56,8 @@ carrito.forEach((e, indice) => {
     };
 
     disminuir.onclick = () => {
-        if (e.cantidad > 0) {
+        let cantidadAnterior = e.cantidad;
+        if (e.cantidad > 1) {
             e.cantidad--;
 
             const elemento = stock.find((el) => el.nombre == e.nombre);
@@ -57,12 +67,36 @@ carrito.forEach((e, indice) => {
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("stock", JSON.stringify(stock));
 
+            cantidadValor.innerText = e.cantidad;
+        }
+        if (cantidadAnterior == 1) {
+            e.cantidad--;
+            const elemento = stock.find((el) => el.nombre == e.nombre);
+            const id = stock.indexOf(elemento);
+            stock[id].cantidad++;
+
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            localStorage.setItem("stock", JSON.stringify(stock));
+        }
+        if (e.cantidad == 0) {
+            carrito.splice(carrito.indexOf(e), 1);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            localStorage.setItem("stock", JSON.stringify(stock));
+
             document.location.reload();
         }
+
+        //Mostrar total a pagar
+        let a = 0;
+        carrito.forEach((e) => {
+            a += e.cantidad * e.precio;
+        });
+        monto.innerText = `$${a.toFixed(2)}`;
     };
 
     //Renderizar columnas
-    cantidad.innerText = `x${e.cantidad}`;
+    cantidadValor.innerText = e.cantidad;
+    cantidad.append(cantidadValor);
     cantidad.append(aumentar);
     cantidad.append(disminuir);
     if (e.cantidad > 0) {
@@ -74,24 +108,34 @@ carrito.forEach((e, indice) => {
 
 //Vaciar carrito:
 vaciarCarrito.onclick = () => {
-    stock.forEach((el) => {
-        carrito.forEach((e) => {
-            let vaciar = el.nombre == e.nombre ? el.cantidad += e.cantidad : "";
-            vaciar;
+    if(carrito.length != 0){
+        stock.forEach((el) => {
+            carrito.forEach((e) => {
+                let vaciar = el.nombre == e.nombre ? el.cantidad += e.cantidad : "";
+                vaciar;
+            });
         });
-    });
-    carrito = [];
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    localStorage.setItem("stock", JSON.stringify(stock));
-    document.location.reload();
+        carrito = [];
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        localStorage.setItem("stock", JSON.stringify(stock));
+        document.location.reload();
+    }
+    else {
+        swal("No hay artículos en el carrito...");
+    }
 }
 
 //Finalizar compra
 //Simula una compra, limpia el carrito y refleja la falta en el stock:
 finalizarCompra.onclick = () => {
-    carrito = [];
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-    document.location.reload();
+    if(carrito.length != 0) {
+        carrito = [];
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        document.location.reload();
+    }
+    else {
+        swal("No hay artículos en el carrito...");
+    }
 }
 
 //Mostrar total a pagar

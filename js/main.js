@@ -1,3 +1,29 @@
+//Api para Newsletter
+(function () {
+    // https://dashboard.emailjs.com/admin/account
+    emailjs.init('w_mHVS6aJz-q1XKPo');
+})();
+let a
+if (a = document.getElementById('contact') != null) {
+    window.onload = function () {
+        document.getElementById('contact').addEventListener('submit', function (event) {
+            event.preventDefault();
+            // these IDs from the previous steps
+            emailjs.sendForm('service_ozhg8t9', 'template_m1pclqw', this)
+                .then(function () {
+                    swal("¡Te has registrado!");;
+                }, function (error) {
+                    swal("Ocurrió un error... intente de nuevo");;
+                });
+        });
+    }
+}
+
+/* let newsButton = document.getElementById("newsletterButton");
+newsButton.onclick = () => {
+    swal("¡Te has registrado!");
+}; */
+
 //Array del carrito:
 //De existir un carrito, recuperarlo:
 let carrito = JSON.parse(localStorage.getItem("carrito"));
@@ -10,13 +36,13 @@ if (carrito == undefined) {
 let stock = JSON.parse(localStorage.getItem("stock"));
 if (stock == undefined || stock.length == 0) {
     stock = [];
-    stock.push(new Producto("Peines Keller", 629.99, 60));
+    stock.push(new Producto("Peines Keller", 629.99, 15));
     stock.push(new Producto("Perfume Snirf", 1339.99, 20));
-    stock.push(new Producto("Kit higiene bucal", 460.00, 50));
+    stock.push(new Producto("Kit higiene bucal", 460.00, 5));
     stock.push(new Producto("Kit maquillaje Renkor", 4489.99, 30));
-    stock.push(new Producto("Cremas L'Oréal", 459.50, 40));
-    stock.push(new Producto("Labial Maybelline", 1000.00, 45));
-    stock.push(new Producto("Juego de brochas", 449.99, 55));
+    stock.push(new Producto("Cremas L'Oréal", 459.50, 10));
+    stock.push(new Producto("Labial Maybelline", 1000.00, 12));
+    stock.push(new Producto("Juego de brochas", 449.99, 4));
 }
 
 //Obtencion de los botones para añadir articulos al carrito
@@ -60,7 +86,7 @@ function agregarAlCarrito(id) {
 }
 
 //Agregar producto al carrito
-/* Como solo existe un boton de añadir al carrito por producto en cada página
+/* Como solo existe un boton de añadir al carrito por producto en cada página,
 se puede acceder a cualquier boton utilizando botonX[0] */
 //Antes de definir las funciones se verifica que el boton exista en la página
 if (boton0.length != 0) {

@@ -239,6 +239,9 @@ a {
   list-style: none;
   height: 30px;
 }
+.main .carrito .cantidad .cantidadLista li span {
+  margin: 0;
+}
 .main .carrito .cantidad .cantidadLista li button {
   width: 25px;
   height: 25px;
@@ -257,6 +260,31 @@ a {
 }
 .grid-products .card {
   margin: 10px 5px;
+}
+
+#finalizar {
+  margin-bottom: 1rem;
+  background-color: #0b486b;
+  border: none;
+  box-shadow: 1px 2px 3px #272727;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 5px 0;
+  width: 150px;
+  color: #fff;
+  transition: 0.2s;
+}
+
+#vaciar {
+  background-color: #0b486b;
+  border: none;
+  box-shadow: 1px 2px 3px #272727;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 5px 0;
+  width: 150px;
+  color: #fff;
+  transition: 0.2s;
 }
 
 .footer {
@@ -343,5 +371,14 @@ a {
   .main .newsletter button:hover {
     background-color: #fff;
     color: #0b486b;
+  }
+  #finalizar {
+    margin-right: 2rem;
+  }
+  #finalizar:hover {
+    background-color: #4ebd57;
+  }
+  #vaciar:hover {
+    background-color: #c53e3e;
   }
 }/*# sourceMappingURL=main.css.map */
