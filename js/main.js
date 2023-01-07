@@ -19,11 +19,6 @@ if (a = document.getElementById('contact') != null) {
     }
 }
 
-/* let newsButton = document.getElementById("newsletterButton");
-newsButton.onclick = () => {
-    swal("¡Te has registrado!");
-}; */
-
 //Array del carrito:
 //De existir un carrito, recuperarlo:
 let carrito = JSON.parse(localStorage.getItem("carrito"));
@@ -85,6 +80,33 @@ function agregarAlCarrito(id) {
     }
 }
 
+//icono carrito
+let cant = 0
+
+carrito.map((e) => {
+    cant += e.cantidad;
+});
+
+if (cant < 1) {
+    localStorage.clear();
+}
+
+let iconoCarro = document.getElementsByClassName('carro')[0];
+let icono = localStorage.getItem('carritoActivo')
+
+if(icono == 'true') {
+    iconoCarro.classList.toggle('active');
+}
+
+function isIcono() {
+    if (!iconoCarro.classList.contains('active')) {
+        iconoCarro.classList.toggle('active');
+        localStorage.setItem('carritoActivo', true);
+    }
+}
+
+
+
 //Agregar producto al carrito
 /* Como solo existe un boton de añadir al carrito por producto en cada página,
 se puede acceder a cualquier boton utilizando botonX[0] */
@@ -92,35 +114,45 @@ se puede acceder a cualquier boton utilizando botonX[0] */
 if (boton0.length != 0) {
     boton0[0].onclick = () => {
         agregarAlCarrito(0);
+        isIcono();
     }
 }
 if (boton1.length != 0) {
     boton1[0].onclick = () => {
         agregarAlCarrito(1);
+        isIcono();
     }
 }
 if (boton2.length != 0) {
     boton2[0].onclick = () => {
         agregarAlCarrito(2);
+        isIcono();
     }
 }
 if (boton3.length != 0) {
     boton3[0].onclick = () => {
         agregarAlCarrito(3);
+        isIcono();
     }
 }
 if (boton4.length != 0) {
     boton4[0].onclick = () => {
         agregarAlCarrito(4);
+        isIcono();
     }
 }
 if (boton5.length != 0) {
     boton5[0].onclick = () => {
         agregarAlCarrito(5);
+        isIcono();
     }
 }
 if (boton6.length != 0) {
     boton6[0].onclick = () => {
         agregarAlCarrito(6);
+        isIcono();
     }
 }
+
+
+

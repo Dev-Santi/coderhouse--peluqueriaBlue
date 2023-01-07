@@ -37,6 +37,38 @@ a {
   max-height: 420px;
   z-index: 1000;
 }
+.navbar .container-fluid .buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 1rem;
+}
+.navbar .container-fluid .buttons .carro h5 {
+  display: none;
+}
+.navbar .container-fluid .buttons .carro.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbar .container-fluid .buttons .carro.active h5 {
+  display: block;
+  padding: 0.2rem;
+  border-radius: 50%;
+  text-align: center;
+  min-width: 1.5rem;
+  font-size: 1rem;
+  background-color: #fc3636;
+}
+.navbar .container-fluid .buttons #shopping-cart {
+  margin-bottom: 2rem;
+}
+.navbar .container-fluid .buttons .shopping-cart {
+  fill: #fff;
+}
+.navbar .container-fluid .buttons svg {
+  cursor: pointer;
+}
 .navbar .container-fluid .navbar-brand {
   width: 70%;
 }

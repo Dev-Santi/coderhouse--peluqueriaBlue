@@ -146,3 +146,29 @@ carrito.forEach((e) => {
 let monto = document.createElement("p");
 monto.innerText = `$${acum.toFixed(2)}`;
 total.append(monto);
+
+//
+
+let cant = 0
+
+carrito.map((e) => {
+    cant += e.cantidad;
+});
+
+if (cant < 1) {
+    localStorage.clear();
+}
+
+let iconoCarro = document.getElementsByClassName('carro')[0];
+let icono = localStorage.getItem('carritoActivo')
+
+if(icono == 'true') {
+    iconoCarro.classList.toggle('active');
+}
+
+function isIcono() {
+    if (!iconoCarro.classList.contains('active')) {
+        iconoCarro.classList.toggle('active');
+        localStorage.setItem('carritoActivo', true);
+    }
+}

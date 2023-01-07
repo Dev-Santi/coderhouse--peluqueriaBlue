@@ -13,7 +13,6 @@ a {
 }
 
 //nav
-
 .navbar {
     @include box_shadow;
     background-color: map-get($map: $second_palette, $key: '5');
@@ -21,6 +20,46 @@ a {
     z-index: 1000;
 
     .container-fluid {
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-right: 1rem;
+
+            .carro {
+                h5 {
+                    display: none;
+                }
+            }
+
+            .carro.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h5 {
+                    display: block;
+                    padding: 0.2rem;
+                    border-radius: 50%;
+                    text-align: center;
+                    min-width: 1.5rem;
+                    font-size: 1rem;
+                    background-color: #fc3636;
+                }
+            }
+
+            #shopping-cart {
+                margin-bottom: 2rem;
+            }
+
+            .shopping-cart {
+                fill: #fff;
+            }
+
+            svg {
+                cursor: pointer;
+            }
+        }
+
         .navbar-brand {
             width: 70%;
 
